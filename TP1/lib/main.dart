@@ -25,6 +25,10 @@ GoRouter router() {
             path: FavoritesPage.routeName,
             builder: (context, state) => const FavoritesPage(),
           ),
+          GoRoute(
+          path: MediaPage.routeName,
+          builder: (BuildContext context, GoRouterState state) => MediaPage(),
+        ),
         ],
       ),
     ],
