@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:testing_app/models/favorites.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/screens/home.dart';
+import 'package:testing_app/screens/media.dart';
 
 void main() {
   runApp(const TestingApp());
