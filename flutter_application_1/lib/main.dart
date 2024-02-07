@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
             BigCard(pair: pair),      
             ElevatedButton(
               onPressed: () {
-                appState.getNext(); ;
+                appState.getNext();
               },
               child: Text('Next'),
             ),
