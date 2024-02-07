@@ -1,12 +1,5 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:testing_app/models/favorites.dart';
-import 'package:testing_app/screens/favorites.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/';
@@ -17,65 +10,42 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Testing Sample'),
-        actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-        ],
+        title: const Text('Page d\'accueil'),
       ),
-      body: ListView.builder(
-        itemCount: 100,
-        cacheExtent: 20.0,
-        controller: ScrollController(),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(index),
-      ),
-    );
-  }
-}
-
-class ItemTile extends StatelessWidget {
-  final int itemNo;
-
-  const ItemTile(this.itemNo, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final favoritesList = context.watch<Favorites>();
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
-        ),
-        title: Text(
-          'Item $itemNo',
-          key: Key('text_$itemNo'),
-        ),
-        trailing: IconButton(
-          key: Key('icon_$itemNo'),
-          icon: favoritesList.items.contains(itemNo)
-              ? const Icon(Icons.favorite)
-              : const Icon(Icons.favorite_border),
-          onPressed: () {
-            !favoritesList.items.contains(itemNo)
-                ? favoritesList.add(itemNo)
-                : favoritesList.remove(itemNo);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(favoritesList.items.contains(itemNo)
-                    ? 'Added to favorites.'
-                    : 'Removed from favorites.'),
-                duration: const Duration(seconds: 1),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Bienvenue sur la page d\'accueil',
+                style: TextStyle(fontSize: 24),
+                textAlign: TextAlign.center,
               ),
-            );
-          },
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                context.go('/favorites_page');
+              },
+              icon: const Icon(Icons.favorite),
+              label: const Text('Favoris'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(200, 50), // Set the minimum button size
+              ),
+            ),
+            SizedBox(height: 20), // Spacing between buttons
+            ElevatedButton.icon(
+              onPressed: () {
+                context.go('/media_page');
+              },
+              icon: const Icon(Icons.photo_library),
+              label: const Text('Media'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(200, 50), // Set the minimum button size
+              ),
+            ),
+          ],
         ),
       ),
     );
