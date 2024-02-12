@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           color: Color.fromARGB(255, 244, 230, 255)
           ),
           ),
-          backgroundColor: Color.fromARGB(255, 74, 56, 72)
+          backgroundColor: const Color.fromARGB(255, 74, 56, 72)
       ),
       body: Center(
         child: Column(
