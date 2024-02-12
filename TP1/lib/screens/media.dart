@@ -13,7 +13,7 @@ class MediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vos découvertes'),
+        title: const Text('A découvrir'),
       ),
       body: ListView(
         children: [
@@ -56,6 +56,10 @@ class MusicTile extends StatelessWidget {
               if (media.album != null) ...[
                 const TextSpan(text: 'Album', style: TextStyle(decoration: TextDecoration.underline)),
                 TextSpan(text: ' : ${media.album}\n'),
+              ],
+                if (media.categorie != null) ...[
+                const TextSpan(text: 'Catégorie', style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: ' : ${media.categorie}\n'),
               ],
             ],
           ),
@@ -100,7 +104,7 @@ class PodcastTile extends StatelessWidget {
           text: TextSpan(
             style: TextStyle(color: Colors.black, fontSize: 14),
             children: [
-              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
+              const TextSpan(text: 'Artiste(s)', style: TextStyle(decoration: TextDecoration.underline)),
               TextSpan(text: ' : ${media.artist}\n'),
               if (media.description != null) ...[
                 const TextSpan(text: 'Description', style: TextStyle(decoration: TextDecoration.underline)),

@@ -9,6 +9,7 @@ import 'package:testing_app/models/favorites.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/screens/home.dart';
 import 'package:testing_app/screens/media.dart';
+import 'package:testing_app/screens/about.dart';
 
 void main() {
   runApp(const TestingApp());
@@ -29,6 +30,10 @@ GoRouter router() {
           path: MediaPage.routeName,
           builder: (BuildContext context, GoRouterState state) => MediaPage(),
         ),
+          GoRoute(
+            path: AboutPage.routeName, // Chemin vers la page "À propos"
+            builder: (BuildContext context, GoRouterState state) => AboutPage(), // Construction de la page "À propos"
+          ),
         ],
       ),
     ],
