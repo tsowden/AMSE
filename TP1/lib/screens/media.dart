@@ -91,8 +91,11 @@ class MusicTile extends StatelessWidget {
                 ),),
               ],
                 if (media.categorie != null) ...[
-                const TextSpan(text: 'Catégorie', style: TextStyle(decoration: TextDecoration.underline)),
-                TextSpan(text: ' : ${media.categorie}\n'),
+                const TextSpan(text: 'Catégorie', style: TextStyle(decoration: TextDecoration.underline,color: Color.fromARGB(255, 244, 230, 255),
+                fontFamily: 'MonoSpatial',)),
+                TextSpan(text: ' : ${media.categorie}\n',style: const TextStyle(
+                color: Color.fromARGB(255, 244, 230, 255),
+                fontFamily: 'MonoSpatial',)),
               ],
             ],
           ),

@@ -19,7 +19,8 @@ class FavoritesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vos favoris'),
+        title: const Text('Vos favoris',style:TextStyle(color: Color.fromARGB(255, 244, 230, 255),fontFamily: 'Bebas',)),
+        backgroundColor: const Color.fromARGB(255, 74, 56, 72),
       ),
       body: ListView(
         children: [

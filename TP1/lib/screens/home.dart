@@ -13,11 +13,10 @@ class HomePage extends StatelessWidget {
         title: const Text(
           'Page d\'accueil',
           style: TextStyle(fontFamily: 'Bebas',
-          fontSize:12,
           color: Color.fromARGB(255, 244, 230, 255)
           ),
           ),
-          backgroundColor: const Color.fromARGB(255, 74, 56, 72)
+          backgroundColor: const Color.fromARGB(255, 74, 56, 72),
       ),
       body: Center(
         child: Column(
@@ -85,7 +84,17 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.info),
               label: const Text('A propos'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50),
+                backgroundColor: const Color.fromARGB(255, 74, 56, 72), // Couleur fond bouton
+                foregroundColor: const Color.fromARGB(255, 244, 230, 255), // Couleur Texte
+                minimumSize: const Size(200, 50),
+                padding: const EdgeInsets.all(10),
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Bebas',
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
               
             ),
