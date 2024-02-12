@@ -90,6 +90,10 @@ class MusicTile extends StatelessWidget {
                   fontFamily: 'MonoSpatial',
                 ),),
               ],
+                if (media.categorie != null) ...[
+                const TextSpan(text: 'Catégorie', style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: ' : ${media.categorie}\n'),
+              ],
             ],
           ),
         ),
@@ -135,11 +139,8 @@ class PodcastTile extends StatelessWidget {
             style: const TextStyle( color: Color.fromARGB(255, 244, 230, 255),
                   fontFamily: 'MonoSpatial',),
             children: [
-              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline, color: Color.fromARGB(255, 244, 230, 255),
-                  fontFamily: 'MonoSpatial',)),
-              TextSpan(text: ' : ${media.artist}\n',
-              style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255),
-                  fontFamily: 'MonoSpatial',)),
+              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
+              TextSpan(text: ' : ${media.artist}\n'),
               if (media.description != null) ...[
                 const TextSpan(text: 'Description', style: TextStyle(decoration: TextDecoration.underline)),
                 const TextSpan(text: ' : ', style: TextStyle(color: Color.fromARGB(255, 244, 230, 255),
