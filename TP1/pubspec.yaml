@@ -40,6 +40,12 @@ flutter:
     - family: Payback
       fonts:
         - asset: fonts/PaybAck.ttf
+    - family: MonoSpatial
+      fonts:
+        - asset: fonts/MonoSpatial.ttf
+    - family: KC
+      fonts:
+        - asset: fonts/KenyanCoffee-Regular.ttf
     
   uses-material-design: true
   assets:

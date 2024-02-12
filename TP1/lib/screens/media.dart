@@ -13,18 +13,35 @@ class MediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vos découvertes'),
+        title: const Text('Vos découvertes', 
+        style: TextStyle(
+          color: Color.fromARGB(255, 244, 230, 255),
+          fontFamily: 'Bebas'
+        ),
+        ),
+      backgroundColor: const Color.fromARGB(255, 74, 56, 72),
       ),
       body: ListView(
         children: [
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text('Musiques', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text('Musiques', 
+            style: TextStyle(
+              fontSize: 20, 
+              color: Color.fromARGB(255, 244, 230, 255),
+              fontFamily: 'Bebas',
+              
+              )
+              ),
           ),
           ...musics.map((music) => MusicTile(media: music)).toList(),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text('Podcasts', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text('Podcasts', style: TextStyle(
+              fontSize: 20, 
+              color: Color.fromARGB(255, 244, 230, 255),
+              fontFamily: 'Bebas',
+              )),
           ),
           ...podcasts.map((podcast) => PodcastTile(media: podcast)).toList(),
         ],
@@ -45,17 +62,33 @@ class MusicTile extends StatelessWidget {
         leading: Image.asset(media.imageUrl, width: 50, height: 50),
         title: Text(
           media.title,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255),
+          fontFamily: 'KC',
+          ),
         ),
         subtitle: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 14),
+            style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255), fontFamily: 'KC', fontSize: 14),
             children: [
-              const TextSpan(text: 'Artiste(s)', style: TextStyle(decoration: TextDecoration.underline)),
-              TextSpan(text: ' : ${media.artist}\n'),
+              const TextSpan(text: 'Artiste(s)', style: TextStyle(
+                color: Color.fromARGB(255, 244, 230, 255),
+                fontFamily: 'MonoSpatial',
+              ),),
+              TextSpan(text: ' : ${media.artist}\n',
+              style: const TextStyle(
+                color: Color.fromARGB(255, 244, 230, 255),
+                fontFamily: 'MonoSpatial',
+              ),),
               if (media.album != null) ...[
-                const TextSpan(text: 'Album', style: TextStyle(decoration: TextDecoration.underline)),
-                TextSpan(text: ' : ${media.album}\n'),
+                const TextSpan(text: 'Album', style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',)),
+                TextSpan(text: ' : ${media.album}\n',
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',
+                ),),
               ],
             ],
           ),
@@ -94,18 +127,25 @@ class PodcastTile extends StatelessWidget {
         leading: Image.asset(media.imageUrl, width: 50, height: 50),
         title: Text(
           media.title,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'KC',),
         ),
         subtitle: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 14),
+            style: const TextStyle( color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',),
             children: [
-              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
-              TextSpan(text: ' : ${media.artist}\n'),
+              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline, color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',)),
+              TextSpan(text: ' : ${media.artist}\n',
+              style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',)),
               if (media.description != null) ...[
                 const TextSpan(text: 'Description', style: TextStyle(decoration: TextDecoration.underline)),
-                TextSpan(text: ' : ', style: TextStyle(fontStyle: FontStyle.italic)),
-                TextSpan(text: media.description!, style: TextStyle(fontStyle: FontStyle.italic)),
+                const TextSpan(text: ' : ', style: TextStyle(color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',)),
+                TextSpan(text: media.description!, style: const TextStyle(color: Color.fromARGB(255, 244, 230, 255),
+                  fontFamily: 'MonoSpatial',)),
               ],
             ],
           ),
@@ -115,7 +155,7 @@ class PodcastTile extends StatelessWidget {
             final isFavorite = favorites.items.contains(media.id);
             return IconButton(
               icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-              color: isFavorite ? Colors.red : null,
+              color: isFavorite ? Color.fromARGB(255, 96, 8, 148) : null,
               onPressed: () {
                 if (isFavorite) {
                   favorites.remove(media.id); 
