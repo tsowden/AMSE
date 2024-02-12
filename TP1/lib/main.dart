@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:testing_app/models/favorites.dart';
+import 'package:testing_app/screens/about.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/screens/home.dart';
 import 'package:testing_app/screens/media.dart';
@@ -29,6 +30,10 @@ GoRouter router() {
           path: MediaPage.routeName,
           builder: (BuildContext context, GoRouterState state) => MediaPage(),
         ),
+          GoRoute(
+            path: AboutPage.routeName, // Chemin vers la page "À propos"
+            builder: (BuildContext context, GoRouterState state) => AboutPage(), // Construction de la page "À propos"
+          ),
         ],
       ),
     ],

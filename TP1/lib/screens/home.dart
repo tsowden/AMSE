@@ -55,7 +55,21 @@ class HomePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(200, 50), // Set the minimum button size
               ),
+              
             ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              onPressed: () {
+                context.go('/about_page');
+              },
+              icon: const Icon(Icons.info),
+              label: const Text('A propos'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(200, 50),
+              ),
+              
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
