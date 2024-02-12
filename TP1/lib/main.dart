@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:testing_app/models/favorites.dart';
+import 'package:testing_app/screens/about.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/screens/home.dart';
 import 'package:testing_app/screens/media.dart';
-import 'package:testing_app/screens/about.dart';
 
 void main() {
   runApp(const TestingApp());
