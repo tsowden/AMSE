@@ -27,14 +27,14 @@ class FavoritesPage extends StatelessWidget {
           if (favoriteMusics.isNotEmpty) ...[
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text('Musiques favorites', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              child: Text('Musiques favorites', style: TextStyle(color: Color.fromARGB(255, 244, 230, 255),fontSize: 20, fontFamily: 'MonoSpatial')),
             ),
             ...favoriteMusics.map((music) => MusicTile(media: music)).toList(),
           ],
           if (favoritePodcasts.isNotEmpty) ...[
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text('Podcasts favoris', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              child: Text('Podcasts favoris', style: TextStyle(color: Color.fromARGB(255, 244, 230, 255),fontSize: 20, fontFamily: 'MonoSpatial'),),
             ),
             ...favoritePodcasts.map((podcast) => PodcastTile(media: podcast)).toList(),
           ],

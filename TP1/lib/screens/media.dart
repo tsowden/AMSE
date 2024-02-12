@@ -105,7 +105,7 @@ class MusicTile extends StatelessWidget {
             final isFavorite = favorites.items.contains(media.id);
             return IconButton(
               icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-              color: isFavorite ? Colors.red : null,
+              color: isFavorite ? const Color.fromARGB(255, 96, 8, 148) : null,
               onPressed: () {
                 if (isFavorite) {
                   favorites.remove(media.id);
