@@ -2,19 +2,21 @@ class MediaModel {
   final String imageUrl;
   final String title;
   final String artist;
-  final String album;
+  final String? album;
+  final String? description; 
 
   const MediaModel({
-    required this.imageUrl,
     required this.title,
-    required this.artist,
-    required this.album,
+    this.artist = 'Artiste inconnu',
+    this.album,
+    this.imageUrl = 'assets/imgs/default.png',
+    this.description, 
   });
 }
 
 const musics = [
   MediaModel(
-    imageUrl: 'assets/imgs/she.png', 
+    imageUrl: 'assets/imgs/default.png', 
     title: 'Never Gonna Give You Up',
     artist: 'Rick Ashley',
     album: 'Whenever You Need Somebody',
@@ -26,27 +28,44 @@ const musics = [
     album: 'Campagne BDA 2022',
   ),
   MediaModel(
-    imageUrl: 'assets/imgs/she.png',
+    imageUrl: 'assets/imgs/default.png',
     title: 'Anissa',
     artist: 'Wejdene',
     album: '16',
   ),
   MediaModel(
-    imageUrl: 'assets/imgs/she.png',
+    imageUrl: 'assets/imgs/default.png',
     title: 'MONTERO (Call Me By Your Name)',
     artist: 'Lil Nas X',
     album: 'MONTERO',
   ),
   MediaModel(
-    imageUrl: 'assets/imgs/she.png',
+    imageUrl: 'assets/imgs/default.png',
     title: 'INDUSTRY BABY (feat. Jack Harlow)',
     artist: 'Lil Nas X',
     album: 'MONTERO',
   ),
   MediaModel(
-    imageUrl: 'assets/imgs/she.png',
+    imageUrl: 'assets/imgs/default.png',
     title: 'THATS WHAT I WANT',
     artist: 'Lil Nas X',
     album: 'MONTERO',
+  ),
+];
+
+
+const podcasts = [
+  MediaModel(
+    imageUrl: 'assets/imgs/default.png', 
+    title: 'La vie a-t-elle un sens ?',
+    artist: 'Tom SOWDEN & Charlotte BLOUIN',
+    description: '"La vie a-t-elle un sens ?" est un podcast fascinant animé par Tom SOWDEN et Charlotte BLOUIN, qui vous invite à explorer les grandes questions existentielles de la vie. À travers des discussions approfondies, des interviews d\'experts et des témoignages émouvants, ce podcast cherche à dévoiler les différentes perspectives sur le sens de la vie, l\'accomplissement personnel et la quête de bonheur. ',
+  ),
+
+    MediaModel(
+    imageUrl: 'assets/imgs/default.png', 
+    title: 'La reproduction des langoustines en Nouvelle-Zélande',
+    artist: 'Tom SOWDEN & Charlotte BLOUIN',
+    description: 'Plongez au cœur des mystères de la mer avec Tom SOWDEN et Charlotte BLOUIN dans "La reproduction des langoustines en Nouvelle-Zélande". Ce podcast captivant vous emmène dans une exploration scientifique et écologique, révélant les secrets de la vie marine et l\'importance de la préservation des espèces. Une aventure auditive qui change notre regard sur l\'océan.',
   ),
 ];

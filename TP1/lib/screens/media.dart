@@ -6,55 +6,96 @@ import 'package:testing_app/screens/favorites.dart';
 import '/models/models.dart'; 
 
 class MediaPage extends StatelessWidget {
+    const MediaPage({super.key});
+
   static const routeName = 'media_page';
   static const fullPath = '/$routeName';
-
-  const MediaPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Découvrir des musiques'),
-        actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-        ],
+        title: const Text('Découvrir des musiques et podcasts'),
       ),
-      body: ListView.builder(
-        itemCount: musics.length, 
-        cacheExtent: 20.0,
-        controller: ScrollController(),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) {
-          final music = musics[index]; 
-          return ItemTile(music); 
-        },
+      body: ListView(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Musiques', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ),
+          ...musics.map((music) => MusicTile(media: music)).toList(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Podcasts', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ),
+          ...podcasts.map((podcast) => PodcastTile(media: podcast)).toList(),
+        ],
       ),
     );
   }
 }
+class MusicTile extends StatelessWidget {
+  final MediaModel media;
 
-class ItemTile extends StatelessWidget {
-  final MediaModel music;
-
-  const ItemTile(this.music, {super.key});
+  const MusicTile({super.key, required this.media});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: AssetImage(music.imageUrl),
+        leading: Image.asset(media.imageUrl, width: 50, height: 50),
+        title: Text(
+          media.title,
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        title: Text(music.title),
-        subtitle: Text('${music.artist} - ${music.album}'),
+        subtitle: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black, fontSize: 14),
+            children: [
+              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
+              TextSpan(text: ' : ${media.artist}\n'),
+              if (media.album != null) ...[
+                const TextSpan(text: 'Album', style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: ' : ${media.album}\n'),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PodcastTile extends StatelessWidget {
+  final MediaModel media;
+
+  const PodcastTile({super.key, required this.media});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListTile(
+        leading: Image.asset(media.imageUrl, width: 50, height: 50),
+        title: Text(
+          media.title,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black, fontSize: 14),
+            children: [
+              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
+              TextSpan(text: ' : ${media.artist}\n'),
+              if (media.description != null) ...[
+                const TextSpan(text: 'Description', style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: ' : ', style: TextStyle(fontStyle: FontStyle.italic)),
+                TextSpan(text: media.description!, style: TextStyle(fontStyle: FontStyle.italic)),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
