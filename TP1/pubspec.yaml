@@ -24,4 +24,21 @@ dev_dependencies:
   test: ^1.16.8
 
 flutter:
+  fonts:
+    - family: Sixtyfour
+      fonts:
+        - asset: fonts/Sixtyfour-Regular.ttf
+    - family: Lato
+      fonts:
+        - asset: fonts/Lato-Regular.ttf
+    - family: Break
+      fonts:
+        - asset: fonts/Break.ttf
+    - family: Bebas
+      fonts:
+        - asset: fonts/BebasNeue-Regular.ttf
+    - family: Payback
+      fonts:
+        - asset: fonts/PaybAck.ttf
+    
   uses-material-design: true
