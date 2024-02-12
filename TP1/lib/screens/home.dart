@@ -10,7 +10,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Page d\'accueil'),
+        title: const Text(
+          'Page d\'accueil',
+          style: TextStyle(fontFamily: 'Bebas',
+          fontSize:12,
+          color: Color.fromARGB(255, 244, 230, 255)
+          ),
+          ),
+          backgroundColor: const Color.fromARGB(255, 74, 56, 72)
       ),
       body: Center(
         child: Column(
@@ -19,11 +26,15 @@ class HomePage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'Bienvenue sur la page d\'accueil',
-                style: TextStyle(fontSize: 24),
+                'Bienvenue',
+                style: TextStyle(fontFamily: 'Payback',
+                fontSize: 35,
+                color: Color.fromARGB(255, 244, 230, 255)
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
+            const SizedBox(height: 50), // Add space between "Bienvenue" and buttons
             ElevatedButton.icon(
               onPressed: () {
                 context.go('/favorites_page');
@@ -31,10 +42,10 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.favorite),
               label: const Text('Favoris'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50),
+                minimumSize: Size(200, 50), // Set the minimum button size
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20), // Spacing between buttons
             ElevatedButton.icon(
               onPressed: () {
                 context.go('/media_page');
@@ -42,7 +53,7 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.photo_library),
               label: const Text('Media'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50),
+                minimumSize: Size(200, 50), // Set the minimum button size
               ),
             ),
           ],
