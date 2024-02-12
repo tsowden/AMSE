@@ -31,10 +31,10 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.favorite),
               label: const Text('Favoris'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50), // Set the minimum button size
+                minimumSize: Size(200, 50),
               ),
             ),
-            SizedBox(height: 20), // Spacing between buttons
+            SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () {
                 context.go('/media_page');
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.photo_library),
               label: const Text('Media'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50), // Set the minimum button size
+                minimumSize: Size(200, 50),
               ),
             ),
           ],

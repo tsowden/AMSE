@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:testing_app/models/favorites.dart';
-import 'package:testing_app/screens/favorites.dart';
 import '/models/models.dart'; 
 
 class MediaPage extends StatelessWidget {
@@ -15,7 +13,7 @@ class MediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Découvrir des musiques et podcasts'),
+        title: const Text('Vos découvertes'),
       ),
       body: ListView(
         children: [
@@ -64,7 +62,7 @@ class MusicTile extends StatelessWidget {
         ),
         trailing: Consumer<Favorites>(
           builder: (context, favorites, child) {
-            final isFavorite = favorites.items.contains(media.id); // Assurez-vous que `media` a un champ `id`
+            final isFavorite = favorites.items.contains(media.id);
             return IconButton(
               icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
               color: isFavorite ? Colors.red : null,
@@ -111,6 +109,22 @@ class PodcastTile extends StatelessWidget {
               ],
             ],
           ),
+        ),
+        trailing: Consumer<Favorites>(
+          builder: (context, favorites, child) {
+            final isFavorite = favorites.items.contains(media.id);
+            return IconButton(
+              icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+              color: isFavorite ? Colors.red : null,
+              onPressed: () {
+                if (isFavorite) {
+                  favorites.remove(media.id); 
+                } else {
+                  favorites.add(media.id); 
+                }
+              },
+            );
+          },
         ),
       ),
     );

@@ -16,6 +16,17 @@ class MediaModel {
   });
 }
 
+MediaModel? findMediaById(int id) {
+  final allMedia = [...musics, ...podcasts];
+  try {
+    return allMedia.firstWhere((media) => media.id == id);
+  } catch (e) {
+    return null;
+  }
+}
+
+
+
 const musics = [
   MediaModel(
     id: 1,
