@@ -42,10 +42,20 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.favorite),
               label: const Text('Favoris'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50), // Set the minimum button size
+                backgroundColor: const Color.fromARGB(255, 74, 56, 72), // Couleur fond bouton
+                foregroundColor: const Color.fromARGB(255, 244, 230, 255), // Couleur Texte
+                minimumSize: const Size(200, 50),
+                padding: const EdgeInsets.all(10),
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Bebas',
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
-            ),
-            SizedBox(height: 20), // Spacing between buttons
+           ),
+          const SizedBox(height: 20), // Spacing between buttons
             ElevatedButton.icon(
               onPressed: () {
                 context.go('/media_page');
@@ -53,7 +63,17 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.photo_library),
               label: const Text('Media'),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(200, 50), // Set the minimum button size
+                backgroundColor: const Color.fromARGB(255, 74, 56, 72), // Couleur fond bouton
+                foregroundColor: const Color.fromARGB(255, 244, 230, 255), // Couleur Texte
+                minimumSize: const Size(200, 50),
+                padding: const EdgeInsets.all(10),
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Bebas',
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
             ),
           ],
