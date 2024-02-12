@@ -53,7 +53,7 @@ class MusicTile extends StatelessWidget {
           text: TextSpan(
             style: TextStyle(color: Colors.black, fontSize: 14),
             children: [
-              const TextSpan(text: 'Artiste', style: TextStyle(decoration: TextDecoration.underline)),
+              const TextSpan(text: 'Artiste(s)', style: TextStyle(decoration: TextDecoration.underline)),
               TextSpan(text: ' : ${media.artist}\n'),
               if (media.album != null) ...[
                 const TextSpan(text: 'Album', style: TextStyle(decoration: TextDecoration.underline)),
@@ -61,6 +61,22 @@ class MusicTile extends StatelessWidget {
               ],
             ],
           ),
+        ),
+        trailing: Consumer<Favorites>(
+          builder: (context, favorites, child) {
+            final isFavorite = favorites.items.contains(media.id); // Assurez-vous que `media` a un champ `id`
+            return IconButton(
+              icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+              color: isFavorite ? Colors.red : null,
+              onPressed: () {
+                if (isFavorite) {
+                  favorites.remove(media.id);
+                } else {
+                  favorites.add(media.id);
+                }
+              },
+            );
+          },
         ),
       ),
     );
