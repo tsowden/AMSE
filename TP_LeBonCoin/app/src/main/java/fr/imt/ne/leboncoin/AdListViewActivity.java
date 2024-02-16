@@ -11,9 +11,9 @@ public class AdListViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ad_list_view); // Assurez-vous d'avoir ce layout
+        setContentView(R.layout.activity_ad_list_view);
 
-        ListView listView = findViewById(R.id.lvAds); // Remplacez par l'ID de votre ListView
+        ListView listView = findViewById(R.id.lvAds);
 
         ArrayList<AdModel> adModels = new ArrayList<>();
 

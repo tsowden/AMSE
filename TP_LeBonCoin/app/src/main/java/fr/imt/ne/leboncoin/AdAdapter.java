@@ -53,7 +53,6 @@ public class AdAdapter extends BaseAdapter {
         textViewTitle.setText(ad.getTitle());
         textViewAddress.setText(ad.getAddress());
 
-        // Return the completed view to render on screen
         return convertView;
     }
 }
