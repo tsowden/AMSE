@@ -18,7 +18,6 @@ public class AdModel {
         this.title = title;
     }
 
-    // Getter and Setter for address
     public String getAddress() {
         return address;
     }
