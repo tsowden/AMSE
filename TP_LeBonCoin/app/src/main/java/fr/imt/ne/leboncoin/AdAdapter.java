@@ -15,7 +15,6 @@ public class AdAdapter extends BaseAdapter {
     private final ArrayList<AdModel> adModelArrayList;
     private final LayoutInflater inflater;
 
-    // Constructor
     public AdAdapter(Context context, ArrayList<AdModel> adModelArrayList) {
         this.context = context;
         this.adModelArrayList = adModelArrayList;
@@ -34,7 +33,7 @@ public class AdAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position; // on définit ici ID = position de l'élément
+        return position;
     }
 
     @Override
