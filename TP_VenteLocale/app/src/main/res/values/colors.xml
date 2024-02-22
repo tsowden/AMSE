@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main">#73c6b6</color>
     <color name="secondary">#45b39d</color>
+    <color name="Bleu_marine">#003049</color>
+    <color name="Red">#D62828</color>
+    <color name="Vibrant_Orange">#F77F00</color>
+    <color name="Soft_Yellow">#FCBF49</color>
+    <color name="Beige">#EAE2B7</color>
 </resources>

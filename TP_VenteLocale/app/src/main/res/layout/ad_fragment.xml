@@ -54,9 +54,10 @@
             android:id="@+id/txt_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:paddingTop="5dp"
             android:text="Titre"
-            android:textColor="@color/black"
+            android:textColor="@color/Bleu_marine"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -68,7 +69,7 @@
             android:paddingBottom="5dp"
             android:text="Adresse"
             android:textAlignment="textStart"
-            android:textColor="#808080"
+            android:textColor="@color/Vibrant_Orange"
             android:textSize="14sp"
             android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/txt_title" />
