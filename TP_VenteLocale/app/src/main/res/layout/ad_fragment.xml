@@ -55,7 +55,7 @@
             android:fontFamily="@font/bebasneue"
             android:paddingTop="5dp"
             android:text="Titre"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/Bleu_marine"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -71,7 +71,7 @@
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#8C3D58"
+            android:textColor="@color/Vibrant_Orange"
             android:textSize="18sp"
             android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/txt_title" />

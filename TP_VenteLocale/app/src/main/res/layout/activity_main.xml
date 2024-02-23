@@ -54,7 +54,7 @@
 
         android:background="@color/Soft_Yellow"
         android:tint="#FFFFFF"
-        app:backgroundTint="@color/Bleu_marine"
+        app:backgroundTint="@color/Soft_Yellow"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
