@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="activityMainTitle">Annonces</string>
-    <string name="activityCreateAdTitle">Deposer une annonce</string>
+    <string name="activityCreateAdTitle">Poster une annonce</string>
     <string name="activityEditAdTitle">Modifier une annonce</string>
 
     <string name="adNameTint">Nom de l\'annonce</string>
@@ -22,7 +22,7 @@
     <string name="editImageGaleryBtn">Galerie</string>
     <string name="editImageCameraBtn">Caméra</string>
     <string name="adPriceTint">Prix</string>
-    <string name="errorMissingImage">Vous devez choisir une image</string>
+    <string name="errorMissingImage">Choisissez une image</string>
     <string name="errorMissingFields">Tous les champs doivent être remplis.</string>
     <string name="adPhoneTint">Téléphone</string>
 </resources>
