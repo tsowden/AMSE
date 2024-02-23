@@ -18,11 +18,11 @@
     <string name="adAddressTint">Adresse</string>
 
     <string name="submitBtn">Publier l\'annonce</string>
-    <string name="editBtn">Modifer l\'annonce</string>
+    <string name="editBtn">Modifier l\'annonce</string>
     <string name="editImageGaleryBtn">Galerie</string>
     <string name="editImageCameraBtn">Caméra</string>
     <string name="adPriceTint">Prix</string>
     <string name="errorMissingImage">Choisissez une image</string>
-    <string name="errorMissingFields">Tous les champs doivent être remplis.</string>
+    <string name="errorMissingFields">Remplissez tout les champs manquants.</string>
     <string name="adPhoneTint">Téléphone</string>
 </resources>
