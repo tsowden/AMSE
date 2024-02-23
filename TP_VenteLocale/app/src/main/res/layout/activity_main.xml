@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
+
+    <!--app:fontFamily="@font/creamcake" -->
 
     <TextView
         android:id="@+id/activityMainTitle"
@@ -16,26 +17,27 @@
         android:fontFamily="@font/agressive"
         android:text="@string/activityMainTitle"
         android:textAlignment="center"
-        android:textColor="@color/Red"
+        android:textColor="@color/Bleu_marine"
         android:textSize="40sp"
-        android:textStyle="bold"
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-        <!--app:fontFamily="@font/creamcake" -->
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="27dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listeAnnonces"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="442dp"
+        android:layout_height="757dp"
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingHorizontal="8dp"
         android:paddingBottom="10dp"
         app:flow_verticalBias="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityMainTitle">
+        app:layout_constraintTop_toBottomOf="@id/activityMainTitle"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -45,12 +47,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/baseline_add_24"
-        />
+
+        android:background="@color/Soft_Yellow"
+        android:tint="#FFFFFF"
+        app:backgroundTint="@color/teal_700"
+        app:backgroundTintMode="add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:rippleColor="#FFFFFF"
+        app:srcCompat="@drawable/baseline_add_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

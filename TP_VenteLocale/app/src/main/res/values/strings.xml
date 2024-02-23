@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="activityMainTitle">Annonces</string>
-    <string name="activityCreateAdTitle">Déposer une annonce</string>
+    <string name="activityCreateAdTitle">Deposer une annonce</string>
     <string name="activityEditAdTitle">Modifier une annonce</string>
 
     <string name="adNameTint">Nom de l\'annonce</string>

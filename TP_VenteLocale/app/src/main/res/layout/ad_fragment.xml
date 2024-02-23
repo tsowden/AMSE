@@ -54,9 +54,10 @@
             android:id="@+id/txt_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
+            android:fontFamily="@font/bebasneue"
             android:paddingTop="5dp"
             android:text="Titre"
+            android:textAlignment="center"
             android:textColor="@color/Bleu_marine"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -65,13 +66,15 @@
             android:id="@+id/txt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/caviarbold"
             android:paddingLeft="3dp"
             android:paddingBottom="5dp"
             android:text="Adresse"
             android:textAlignment="textStart"
-            android:textColor="@color/Vibrant_Orange"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#00C580"
             android:textSize="14sp"
-            android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/txt_title" />
     </LinearLayout>
 
