@@ -2,15 +2,16 @@
     <!-- Base application theme. -->
     <style name="Theme.TPLeBonCoin" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/main</item>
-        <item name="colorPrimaryVariant">@color/main</item>
+        <item name="colorPrimary">@color/Bleu_marine</item>
+        <item name="colorPrimaryVariant">@color/Bleu_marine</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorSecondary">@color/Vibrant_Orange</item>
+        <item name="colorSecondaryVariant">@color/Soft_Yellow</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/Soft_Yellow</item>
+
         <!-- Customize your theme here. -->
     </style>
 
