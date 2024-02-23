@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/background"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp"
 
-  >
+    android:paddingRight="5dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
@@ -15,13 +15,12 @@
         android:layout_height="200dp"
         android:layout_marginTop="5dp"
 
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/LinearLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/rounded_corner"
-        />
+        app:shapeAppearanceOverlay="@style/rounded_corner" />
     <!-- android:src="@drawable/image0" -->
 
 
@@ -31,11 +30,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toTopOf="@id/imageView"
         app:layout_constraintBottom_toBottomOf="@id/imageView"
         app:layout_constraintLeft_toLeftOf="@id/imageView"
         app:layout_constraintRight_toRightOf="@id/imageView"
-        />
+        app:layout_constraintTop_toTopOf="@id/imageView" />
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -59,26 +57,25 @@
             android:text="Titre"
             android:textAlignment="center"
             android:textColor="@color/Bleu_marine"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/caviarbold"
+            android:fontFamily="@font/kenyancoffee"
             android:paddingLeft="3dp"
             android:paddingBottom="5dp"
             android:text="Adresse"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#00C580"
-            android:textSize="14sp"
+            android:textColor="#8C3D58"
+            android:textSize="18sp"
+            android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/txt_title" />
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
