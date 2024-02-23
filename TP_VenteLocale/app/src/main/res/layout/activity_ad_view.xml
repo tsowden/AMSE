@@ -10,8 +10,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/adViewImage"
-
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="290dp"
         android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -56,7 +55,7 @@
             android:fontFamily="@font/bebasneue"
             android:text="Titre annonce"
             android:textColor="@color/Bleu_marine"
-            android:textSize="36dp"
+            android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +67,7 @@
             android:text="Price"
             android:textAlignment="center"
             android:textColor="@color/Red"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -103,22 +102,19 @@
             app:layout_constraintLeft_toRightOf="@id/addressIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/adBtnContact"
-            android:layout_width="55dp"
-            android:layout_height="52dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/Bleu_marine"
-
-            android:backgroundTint="@color/Bleu_marine"
-            android:drawableRight="@drawable/baseline_phone_24"
-            app:iconTint="@color/Bleu_marine"
+        <TextView
+            android:id="@+id/adTextContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="8dp"
+            android:text="Numéro de téléphone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            android:gravity="end"/>
 
-        </Button>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

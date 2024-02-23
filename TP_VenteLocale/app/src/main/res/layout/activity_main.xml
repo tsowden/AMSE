@@ -7,18 +7,16 @@
     android:background="#E8E1F2"
     tools:context=".MainActivity">
 
-    <!--app:fontFamily="@font/creamcake" -->
-
     <TextView
         android:id="@+id/activityMainTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="5dp"
-        android:fontFamily="@font/AGRESSIVE"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/agressive"
         android:text="@string/activityMainTitle"
         android:textAlignment="center"
-
         android:textColor="@color/Bleu_marine"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -28,36 +26,28 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listeAnnonces"
-        android:layout_width="442dp"
-        android:layout_height="757dp"
-        android:background="@color/background"
-        android:orientation="vertical"
-        android:paddingHorizontal="8dp"
-        android:paddingBottom="10dp"
-        app:flow_verticalBias="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/background"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toTopOf="@id/fab"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/activityMainTitle"
+    app:layout_constraintVertical_bias="0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-
-        android:background="@color/Soft_Yellow"
+        android:backgroundTint="@color/Soft_Yellow"
         android:tint="#FFFFFF"
         app:backgroundTint="@color/Soft_Yellow"
         app:backgroundTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="#FFFFFF"
         app:srcCompat="@drawable/baseline_add_24" />
 
