@@ -103,18 +103,19 @@
             app:layout_constraintLeft_toRightOf="@id/addressIcon"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
-            android:id="@+id/adBtnContact"
+        <TextView
+            android:id="@+id/adTextContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="6dp"
             android:drawableRight="@drawable/baseline_phone_24"
-
-            android:text="Contacter"
+            android:text="Aucun téléphone"
             app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="5dp">
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="16sp"/>
 
-        </Button>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

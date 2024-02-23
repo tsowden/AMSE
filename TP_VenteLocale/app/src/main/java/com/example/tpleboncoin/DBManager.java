@@ -47,12 +47,12 @@ public class DBManager {
     public void init(){
         open();
 
-        insert(new AdModel("Wood", "Douai", "https://media.istockphoto.com/id/134253640/photo/construction-of-a-wooden-roof-frame-underway.jpg?s=612x612&w=0&k=20&c=e5gUkic9LGQWahIdHozOsEzHKy_HtsmvmtOHmYsejSU=", 30.0, "0102030405"));
-        insert(new AdModel("Steel", "Lille", "https://as2.ftcdn.net/v2/jpg/03/91/83/87/1000_F_391838708_4HFADW5beay2VVlnoual6Qi5fWeIaD9V.jpg", 22.4, "0102030405"));
-        insert(new AdModel("Clay", "Douai", "https://constrofacilitator.com/wp-content/uploads/2020/02/clay-in-construction.jpg", 30940.4, "0102030405"));
-        insert(new AdModel("Metal", "Lyon", "https://www.meto-constructions.fr/wp-content/uploads/2018/12/IMG_6067.jpg", 10302.4, "0102030405"));
-        insert(new AdModel("Glass", "Valenciennes", "https://i0.wp.com/www.tipsnepal.com/wp-content/uploads/2020/09/simple-float-glass-1505049573-3306125.jpeg?resize=500%2C317&quality=100&strip=all&ssl=1", 2340.4, "0102030405"));
-        insert(new AdModel("Wood", "Orchies", "https://yieldpro.com/wp-content/uploads/2020/08/lumber1.jpg", 210.4, "0102030405"));
+        insert(new AdModel("Canard en plastique", "Paris", "https://le-chat-perche.ch/wp-content/uploads/2019/10/Duck.jpg", 4.00, "0612345678"));
+        insert(new AdModel("Trottinette volée", "Lille", "https://www.minimotors.fr/wp-content/uploads/2021/02/Dualtron_Ultra_2_1200x1600_1.jpg", 34.50, "0612345678"));
+        insert(new AdModel("Sac gucci", "Douai", "https://www.rouxel.com/400/34632.jpg?ac=20240211", 8900.00, "0612345678"));
+        insert(new AdModel("Flûte à bec", "Douai", "https://www.cdiscount.com/pdt2/0/6/7/1/700x700/auc7192568032067/rw/instruments-de-musique-a-vent-en-bois-maped-flut.jpg", 14.99, "0612345678"));
+        insert(new AdModel("Tchoupi - L'intégrale", "Douai", "https://m.media-amazon.com/images/I/71mCwArcjuL._AC_UF1000,1000_QL80_.jpg", 74.99, "0612345678"));
+        insert(new AdModel("Apple watch", "Nantes", "https://www.montre-enfant.com/images/imageshop/produit/2021/02/m_601d5257c0bd76.34042272.jpeg", 2799.99, "0612345678"));
 
 
     }

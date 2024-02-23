@@ -38,6 +38,9 @@ public class AdViewActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.dataPriceText)).setText(data.getPrice() + "€");
         ((TextView) findViewById(R.id.dataAddressText)).setText(data.getAddress());
 
+        TextView phoneTextView = findViewById(R.id.adTextContact);
+        phoneTextView.setText("Contact: " + data.getPhone());
+
         ShapeableImageView imageView = findViewById(R.id.adViewImage);
 
         if(data.isInvalidImage())
@@ -94,14 +97,6 @@ public class AdViewActivity extends AppCompatActivity {
             }
         });
 
-        ((Button) findViewById(R.id.adBtnContact)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + data.getPhone()));
-                startActivity(intent);
-            }
-        });
 
     }
 }
