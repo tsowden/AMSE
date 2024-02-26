@@ -19,15 +19,6 @@ public class AdModel implements Serializable {
 
     @Nullable
     private Bitmap cache;
-
-    /**
-     * Constructeur complet
-     * @param _id
-     * @param title
-     * @param address
-     * @param image
-     * @param price
-     */
     public AdModel(long _id, String title, String address, String image, double price, String phone)
     {
         this._id = _id;
@@ -38,13 +29,6 @@ public class AdModel implements Serializable {
         this.phone = phone;
     }
 
-    /**
-     * Constructeur light
-     * @param title
-     * @param address
-     * @param image
-     * @param price
-     */
     public AdModel(String title, String address, String image, double price, String phone)
     {
         this._id = -1;

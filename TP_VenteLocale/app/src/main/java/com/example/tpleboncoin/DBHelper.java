@@ -9,10 +9,8 @@ import com.example.tpleboncoin.AdModel;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    // Table Name
     public static final String TABLE_NAME = "ad_list";
 
-    // Table columns
     public static final String _ID = "_id";
     public static final String TITLE = "title";
     public static final String ADDRESS = "address";
@@ -50,7 +48,6 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Util if you want to add a clicklistener on specific ad in listview.
     public AdModel getById(long id) {
         SQLiteDatabase db=this.getWritableDatabase();
         String query="SELECT * FROM "+TABLE_NAME+" where "+ _ID + "=?";
