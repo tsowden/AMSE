@@ -35,7 +35,7 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
                         ..rotateZ(_mirrorEffect ? -_rotationAngle : _rotationAngle)
-                        ..scale(1.0, _mirrorEffect ? -1.0 : 1.0)
+                        ..scale( _mirrorEffect ? -1.0 : 1.0, 1.0)
                         ..translate(_positionX, _positionY),
                       child: Image.network(
                         'https://picsum.photos/512/1024',
