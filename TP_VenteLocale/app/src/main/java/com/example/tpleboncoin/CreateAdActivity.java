@@ -35,8 +35,6 @@ public class CreateAdActivity extends AppCompatActivity {
 
     private Bitmap selectedBitmap;
     private Uri selectedUri;
-
-    // Ad en cours edition optinnel
     private AdModel editedAd;
 
     ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult( new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -167,7 +165,7 @@ public class CreateAdActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     } else {
-                        // on met simplement url
+
 
                         try {
 

@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // DBManager.getDBManager(this).init();
         while(cursor.moveToNext())
         {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(_ID));
