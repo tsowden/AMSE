@@ -4,6 +4,7 @@ class Exo2bScreen extends StatefulWidget {
   const Exo2bScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _Exo2bScreenState createState() => _Exo2bScreenState();
 }
 
@@ -30,7 +31,7 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                   children: [
                     Transform(
                       alignment: Alignment.center,
-                      transform: Matrix4.rotationZ(0.78),
+                      transform: Matrix4.rotationZ(_mirrorEffect ? 0.78 : 0),
                       child: Image.network(
                         'https://picsum.photos/512/1024',
                         key: UniqueKey(),
@@ -47,7 +48,10 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Effet miroir'),
+                  const Text(
+                    'Effet miroir',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                   Checkbox(
                     value: _mirrorEffect,
                     onChanged: (value) {
@@ -74,7 +78,6 @@ class AxesPainter extends CustomPainter {
       ..strokeWidth = 2.0;
 
     canvas.drawLine(Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
-
     canvas.drawLine(Offset(size.width / 2, 0), Offset(size.width / 2, size.height), paint);
   }
 
