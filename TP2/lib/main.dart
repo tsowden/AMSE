@@ -71,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             title: const Text('Exercice 5b'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ImageGrid(imageUrl: 'assets/imgs/basile_carre.png'),
+                builder: (context) => const ImageGrid(imageUrl: 'assets/imgs/basile_carre.png'),
               ));
             },
           ),
@@ -84,7 +84,7 @@ class MyHomePage extends StatelessWidget {
           ),
 
           ListTile(
-            title: const Text('Exercice 6a'),
+            title: const Text('Exercice 6b'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Exo6bScreen()));
             },
