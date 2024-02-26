@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/exo1.dart'; 
 import 'screens/exo2.dart'; 
 import 'screens/exo2b.dart'; 
+import 'screens/exo4.dart'; 
+
 
 
 
@@ -47,6 +49,13 @@ class MyHomePage extends StatelessWidget {
             title: Text('Exercice 2b'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo2bScreen()));
+            },
+          ),
+          ListTile(
+            title: Text('Exercice 4'),
+            onTap: () {
+              
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo4Screen()));
             },
           ),
         ],

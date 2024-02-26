@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Tile {
+class Exo4Screen {
   String imageURL;
   Alignment alignment;
 
-  Tile({required this.imageURL, required this.alignment});
+  Exo4Screen({this.imageURL, this.alignment});
 
   Widget croppedImageTile() {
     return FittedBox(
@@ -23,7 +23,7 @@ class Tile {
   }
 }
 
-Tile tile = new Tile(
+Exo4Screen tile = new Exo4Screen(
     imageURL: 'https://picsum.photos/512', alignment: Alignment(0, 0));
 
 class DisplayTileWidget extends StatelessWidget {
@@ -50,7 +50,7 @@ class DisplayTileWidget extends StatelessWidget {
     );
   }
 
-  Widget createTileWidgetFrom(Tile tile) {
+  Widget createTileWidgetFrom(Exo4Screen tile) {
     return InkWell(
       child: tile.croppedImageTile(),
       onTap: () {
