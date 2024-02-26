@@ -4,13 +4,13 @@ class ImageTiles extends StatelessWidget {
   final String imageUrl;
   final int crossAxisCount;
 
-  ImageTiles({Key? key, required this.imageUrl, this.crossAxisCount = 3}) : super(key: key);
+  const ImageTiles({Key? key, required this.imageUrl, this.crossAxisCount = 3}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Taquin board'),
+        title: const Text('Taquin board'),
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

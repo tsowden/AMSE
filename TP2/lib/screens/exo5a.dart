@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class GridViewExample extends StatelessWidget {
+  const GridViewExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GridView Example'),
+        title: const Text('GridView Example'),
       ),
       body: GridView.count(
         crossAxisCount: 3, 
@@ -18,7 +20,7 @@ class GridViewExample extends StatelessWidget {
             child: Center(
               child: Text(
                 'Tile ${index + 1}', 
-                style: TextStyle(fontSize: 24, color: Colors.white),
+                style: const TextStyle(fontSize: 24, color: Colors.white),
               ),
             ),
           );
