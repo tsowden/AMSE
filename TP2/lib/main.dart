@@ -6,11 +6,7 @@ import 'screens/exo2b.dart';
 import 'screens/exo4.dart'; 
 import 'screens/exo5a.dart'; 
 import 'screens/exo5b.dart'; 
-
-
-
-
-
+import 'screens/exo6b.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -80,9 +76,6 @@ class MyHomePage extends StatelessWidget {
             },
           ),
 
-
-
-
           ListTile(
             title: const Text('Exercice 6'),
             onTap: () {
@@ -91,9 +84,9 @@ class MyHomePage extends StatelessWidget {
           ),
 
           ListTile(
-            title: const Text('Exercice 6'),
+            title: const Text('Exercice 6a'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PositionedTiles()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Exo6bScreen()));
             },
           ),
           
