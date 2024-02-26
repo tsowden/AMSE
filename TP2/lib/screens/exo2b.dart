@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Exo2bScreen extends StatefulWidget {
   const Exo2bScreen({super.key});
 
@@ -9,6 +10,7 @@ class Exo2bScreen extends StatefulWidget {
 }
 
 class _Exo2bScreenState extends State<Exo2bScreen> {
+  double _rotationAngle = 0.0;
   bool _mirrorEffect = false;
 
   @override
@@ -31,7 +33,9 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                   children: [
                     Transform(
                       alignment: Alignment.center,
-                      transform: Matrix4.rotationZ(_mirrorEffect ? 0.78 : 0),
+                      transform: Matrix4.identity()
+                        ..rotateZ(_mirrorEffect ? -_rotationAngle : _rotationAngle)
+                        ..scale(_mirrorEffect ? -1.0 : 1.0),
                       child: Image.network(
                         'https://picsum.photos/512/1024',
                         key: UniqueKey(),
@@ -49,7 +53,26 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Effet miroir',
+                    'Rotation',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Slider(
+                    value: _rotationAngle,
+                    min: 0.0,
+                    max: 360.0,
+                    onChanged: (value) {
+                      setState(() {
+                        _rotationAngle = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Mirror Effect',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Checkbox(
