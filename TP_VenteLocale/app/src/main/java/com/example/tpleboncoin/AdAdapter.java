@@ -128,7 +128,7 @@ public abstract class AdAdapter extends RecyclerView.Adapter<AdAdapter.AdViewHol
                 builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(context, "Annonce supprimé !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Annonce supprimée !", Toast.LENGTH_LONG).show();
                         // Suppression de l'annonce
                         DBManager.getDBManager(context).delete(data.getID());
                         onAdRemoved();
