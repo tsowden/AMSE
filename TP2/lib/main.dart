@@ -3,6 +3,10 @@ import 'screens/exo1.dart';
 import 'screens/exo2.dart'; 
 import 'screens/exo2b.dart'; 
 import 'screens/exo4.dart'; 
+import 'screens/exo5a.dart'; 
+import 'screens/exo5b.dart'; 
+
+
 
 
 
@@ -59,6 +63,23 @@ class MyHomePage extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayTileWidget()));
             },
           ),
+          ListTile(
+            title: const Text('Exercice 5a'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewExample()));
+            },
+          ),
+          ListTile(
+            title: const Text('Exercice 5b'),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
+                ),
+              );
+            },
+          ),
+
         ],
       ),
     );
