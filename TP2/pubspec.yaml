@@ -46,6 +46,8 @@ flutter:
     - family: KC
       fonts:
         - asset: fonts/KenyanCoffee-Regular.ttf
+  assets:
+    - assets/imgs/basile_carre.png
     
 
 

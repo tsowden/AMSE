@@ -77,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
                 ),
-              );
+              ));
             },
           ),
 
