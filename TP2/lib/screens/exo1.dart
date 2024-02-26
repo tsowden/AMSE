@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Exo1Screen extends StatelessWidget {
+  const Exo1Screen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exo 1 : afficher une image'),
+        title: const Text('Exo 1 : afficher une image'),
       ),
       // SingleChildScrollView = permet défilement si image plus grande que l'écran
       body: SingleChildScrollView(
