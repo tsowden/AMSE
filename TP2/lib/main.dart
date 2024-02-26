@@ -70,11 +70,15 @@ class MyHomePage extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GridViewExample()));
             },
           ),
-          ListTile(
+
+           ListTile(
             title: const Text('Exercice 5b'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ImageTiles(imageUrl: 'https://picsum.photos/512'),
+                builder: (context) => ImageTiles(
+                  crossAxisCount: 3, 
+                  imagePath: 'assets/imgs/basile_carre.png', 
+                ),
               ));
             },
           ),
