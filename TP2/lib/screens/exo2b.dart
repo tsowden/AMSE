@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-
 class Exo2bScreen extends StatefulWidget {
   const Exo2bScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _Exo2bScreenState createState() => _Exo2bScreenState();
 }
 
 class _Exo2bScreenState extends State<Exo2bScreen> {
   double _rotationAngle = 0.0;
   bool _mirrorEffect = false;
+  double _positionX = 0.0;
+  double _positionY = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,8 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
                         ..rotateZ(_mirrorEffect ? -_rotationAngle : _rotationAngle)
-                        ..scale(_mirrorEffect ? -1.0 : 1.0),
+                        ..scale(1.0, _mirrorEffect ? -1.0 : 1.0)
+                        ..translate(_positionX, _positionY),
                       child: Image.network(
                         'https://picsum.photos/512/1024',
                         key: UniqueKey(),
@@ -63,6 +64,44 @@ class _Exo2bScreenState extends State<Exo2bScreen> {
                     onChanged: (value) {
                       setState(() {
                         _rotationAngle = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Position X',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Slider(
+                    value: _positionX,
+                    min: -100.0,
+                    max: 100.0,
+                    onChanged: (value) {
+                      setState(() {
+                        _positionX = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Position Y',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Slider(
+                    value: _positionY,
+                    min: -100.0,
+                    max: 100.0,
+                    onChanged: (value) {
+                      setState(() {
+                        _positionY = value;
                       });
                     },
                   ),
