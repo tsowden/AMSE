@@ -75,13 +75,11 @@ class MyHomePage extends StatelessWidget {
             title: const Text('Exercice 5b'),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ImageTiles(
-                  crossAxisCount: 3, 
-                  imagePath: 'assets/imgs/basile_carre.png', 
-                ),
+                builder: (context) => ImageGrid(imageUrl: 'assets/imgs/basile_carre.png'),
               ));
             },
           ),
+
 
 
           ListTile(

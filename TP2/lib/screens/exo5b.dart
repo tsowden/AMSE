@@ -1,67 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-class ImageTiles extends StatelessWidget {
-  final int crossAxisCount;
-  final String imagePath;
+class ImageGrid extends StatelessWidget {
+  final int rows = 3;
+  final int columns = 3;
+  final String imageUrl;
 
-  ImageTiles({
-    Key? key,
-    this.crossAxisCount = 3,
-    required this.imagePath,
-  }) : super(key: key);
+  const ImageGrid({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
-    double gridWidth = MediaQuery.of(context).size.width;
-    double tileSize = gridWidth / crossAxisCount;
-
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Image Grid'),
       ),
-      itemCount: crossAxisCount * crossAxisCount,
-      itemBuilder: (context, index) {
-        final int row = index ~/ crossAxisCount;
-        final int col = index % crossAxisCount;
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: columns,
+        ),
+        itemCount: rows * columns,
+        itemBuilder: (context, index) {
+          final int row = index ~/ columns;
+          final int col = index % columns;
+          final double widthFactor = 1 / columns;
+          final double heightFactor = 1 / rows;
 
-        // Calculer la position du morceau dans l'image d'origine
-        double sourceWidth = tileSize * crossAxisCount;
-        double sourceHeight = tileSize * crossAxisCount;
-
-        double pieceWidth = sourceWidth / crossAxisCount;
-        double pieceHeight = sourceHeight / crossAxisCount;
-
-        double offsetX = col * pieceWidth;
-        double offsetY = row * pieceHeight;
-
-        Rect sourceRect = Rect.fromPoints(
-          Offset(offsetX, offsetY),
-          Offset(offsetX + pieceWidth, offsetY + pieceHeight),
-        );
-
-        // Charger l'image et découper le morceau
-        Image image = Image.asset(
-          imagePath,
-          width: gridWidth,
-          height: gridWidth,
-          fit: BoxFit.cover,
-        );
-
-        return GridTile(
-          child: ClipRect(
-            child: Align(
-              alignment: Alignment.center,
-              child: Image(
-                image: image.image,
-                width: tileSize,
-                height: tileSize,
-                fit: BoxFit.cover,
-                alignment: Alignment(-col * 2 / (crossAxisCount - 1) + 1, -row * 2 / (crossAxisCount - 1) + 1),
-              ),
-            ),
-          ),
-        );
-      },
+          return ImageTile(
+            imageUrl: imageUrl,
+            alignment: Alignment(col * 2 / (columns - 1) - 1, row * 2 / (rows - 1) - 1),
+            widthFactor: widthFactor,
+            heightFactor: heightFactor,
+          );
+        },
+      ),
     );
   }
+}
+
+class ImageTile extends StatelessWidget {
+  final String imageUrl;
+  final Alignment alignment;
+  final double widthFactor;
+  final double heightFactor;
+
+  ImageTile({
+    required this.imageUrl,
+    required this.alignment,
+    required this.widthFactor,
+    required this.heightFactor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.fill,
+      child: ClipRect(
+        child: Container(
+          child: Align(
+            alignment: alignment,
+            widthFactor: widthFactor,
+            heightFactor: heightFactor,
+            child: Image.network(imageUrl),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(const MaterialApp(home: ImageGrid(imageUrl: 'https://picsum.photos/512')));
 }
