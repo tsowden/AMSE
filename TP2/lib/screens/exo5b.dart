@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 
 class ImageGrid extends StatelessWidget {
   final int rows = 3;
