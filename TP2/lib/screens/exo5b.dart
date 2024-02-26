@@ -4,21 +4,16 @@ class ImageTiles extends StatelessWidget {
   final int crossAxisCount;
   final String imagePath;
 
-  const ImageTiles({
-    Key? key, 
+  ImageTiles({
+    Key? key,
     this.crossAxisCount = 3,
-    required this.imagePath, 
+    required this.imagePath,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double gridWidth = MediaQuery.of(context).size.width;
-    Image image = Image.asset(
-      imagePath,
-      width: gridWidth,
-      height: gridWidth, 
-      fit: BoxFit.cover,
-    );
+    double tileSize = gridWidth / crossAxisCount;
 
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -28,18 +23,41 @@ class ImageTiles extends StatelessWidget {
       itemBuilder: (context, index) {
         final int row = index ~/ crossAxisCount;
         final int col = index % crossAxisCount;
-        final Alignment alignment = Alignment(
-          col * 2 / (crossAxisCount - 1) - 1,
-          row * 2 / (crossAxisCount - 1) - 1,
+
+        // Calculer la position du morceau dans l'image d'origine
+        double sourceWidth = tileSize * crossAxisCount;
+        double sourceHeight = tileSize * crossAxisCount;
+
+        double pieceWidth = sourceWidth / crossAxisCount;
+        double pieceHeight = sourceHeight / crossAxisCount;
+
+        double offsetX = col * pieceWidth;
+        double offsetY = row * pieceHeight;
+
+        Rect sourceRect = Rect.fromPoints(
+          Offset(offsetX, offsetY),
+          Offset(offsetX + pieceWidth, offsetY + pieceHeight),
+        );
+
+        // Charger l'image et découper le morceau
+        Image image = Image.asset(
+          imagePath,
+          width: gridWidth,
+          height: gridWidth,
+          fit: BoxFit.cover,
         );
 
         return GridTile(
           child: ClipRect(
             child: Align(
-              alignment: alignment,
-              widthFactor: 1 / crossAxisCount,
-              heightFactor: 1 / crossAxisCount,
-              child: image,
+              alignment: Alignment.center,
+              child: Image(
+                image: image.image,
+                width: tileSize,
+                height: tileSize,
+                fit: BoxFit.cover,
+                alignment: Alignment(-col * 2 / (crossAxisCount - 1) + 1, -row * 2 / (crossAxisCount - 1) + 1),
+              ),
             ),
           ),
         );
