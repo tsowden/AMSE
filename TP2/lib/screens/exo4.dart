@@ -4,7 +4,7 @@ class Exo4Screen {
   String imageURL;
   Alignment alignment;
 
-  Exo4Screen({this.imageURL, this.alignment});
+  Exo4Screen({required this.imageURL, required this.alignment});
 
   Widget croppedImageTile() {
     return FittedBox(
@@ -12,10 +12,10 @@ class Exo4Screen {
       child: ClipRect(
         child: Container(
           child: Align(
-            alignment: alignment,
+            alignment: this.alignment,
             widthFactor: 0.3,
             heightFactor: 0.3,
-            child: Image.network(imageURL),
+            child: Image.network(this.imageURL),
           ),
         ),
       ),
@@ -23,18 +23,15 @@ class Exo4Screen {
   }
 }
 
-Tile tile = Tile(
 Exo4Screen tile = new Exo4Screen(
     imageURL: 'https://picsum.photos/512', alignment: Alignment(0, 0));
 
 class DisplayTileWidget extends StatelessWidget {
-  const DisplayTileWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Display a Tile as a Cropped Image'),
+        title: Text('Display a Tile as a Cropped Image'),
         centerTitle: true,
       ),
       body: Center(
@@ -43,8 +40,8 @@ class DisplayTileWidget extends StatelessWidget {
             width: 150.0,
             height: 150.0,
             child: Container(
-                margin: const EdgeInsets.all(20.0),
-                child: createTileWidgetFrom(tile))),
+                margin: EdgeInsets.all(20.0),
+                child: this.createTileWidgetFrom(tile))),
         Container(
             height: 200,
             child: Image.network('https://picsum.photos/512',

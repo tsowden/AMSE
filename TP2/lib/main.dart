@@ -54,10 +54,9 @@ class MyHomePage extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Exercice 4'),
+            title: const Text('Exercice 4'),
             onTap: () {
-              
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo4Screen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayTileWidget()));
             },
           ),
         ],
