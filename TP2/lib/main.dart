@@ -73,11 +73,17 @@ class MyHomePage extends StatelessWidget {
           ListTile(
             title: const Text('Exercice 5b'),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
-                ),
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const ImageTiles(imageUrl: 'https://picsum.photos/512'),
               ));
+            },
+          ),
+
+
+          ListTile(
+            title: const Text('Exercice 6'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PositionedTiles()));
             },
           ),
 
