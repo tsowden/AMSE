@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Exo2bScreen extends StatelessWidget {
+  const Exo2bScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exo 2 : Rotationer une image'),
+        title: const Text('Exo 2 : Rotationer une image'),
       ),
       // SingleChildScrollView = permet défilement si image plus grande que l'écran
       body: SingleChildScrollView(
