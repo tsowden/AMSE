@@ -41,9 +41,11 @@ class TileWidget extends StatelessWidget {
   }
 }
 
-void main() => runApp(new MaterialApp(home: PositionedTiles()));
+void main() => runApp(const MaterialApp(home: PositionedTiles()));
 
 class PositionedTiles extends StatefulWidget {
+  const PositionedTiles({super.key});
+
   @override
   State<StatefulWidget> createState() => PositionedTilesState();
 }
@@ -55,17 +57,18 @@ class PositionedTilesState extends State<PositionedTiles> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Moving Tiles'),
+        title: const Text('Moving Tiles'),
         centerTitle: true,
       ),
       body: Row(children: tiles),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.sentiment_very_satisfied),
         onPressed: swapTiles,
+        child: const Icon(Icons.sentiment_very_satisfied),
       ),
     );
   }
 
+  // ignore: inference_failure_on_function_return_type
   swapTiles() {
     setState(() {
       tiles.insert(1, tiles.removeAt(0));

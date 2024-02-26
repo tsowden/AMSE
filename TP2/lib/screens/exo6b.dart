@@ -27,6 +27,7 @@ class TileWidget extends StatefulWidget {
   const TileWidget(this.tile, {super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TileWidgetState createState() => _TileWidgetState();
 }
 
