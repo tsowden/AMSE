@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testing_app/screens/exo6.dart';
 import 'screens/exo1.dart'; 
 import 'screens/exo2.dart'; 
 import 'screens/exo2b.dart'; 
@@ -42,19 +43,19 @@ class MyHomePage extends StatelessWidget {
           ListTile(
             title: const Text('Exercice 1'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo1Screen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Exo1Screen()));
             },
           ),
           ListTile(
             title: const Text('Exercice 2'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo2Screen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Exo2Screen()));
             },
           ),
           ListTile(
             title: const Text('Exercice 2b'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Exo2bScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Exo2bScreen()));
             },
           ),
           ListTile(
@@ -66,7 +67,7 @@ class MyHomePage extends StatelessWidget {
           ListTile(
             title: const Text('Exercice 5a'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => GridViewExample()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GridViewExample()));
             },
           ),
           ListTile(
@@ -74,11 +75,19 @@ class MyHomePage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
+                  builder: (context) => const ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
                 ),
               );
             },
           ),
+
+          ListTile(
+            title: const Text('Exercice 6'),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PositionedTiles()));
+            },
+          ),
+          
 
         ],
       ),
