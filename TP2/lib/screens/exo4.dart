@@ -12,10 +12,10 @@ class Tile {
       child: ClipRect(
         child: Container(
           child: Align(
-            alignment: this.alignment,
+            alignment: alignment,
             widthFactor: 0.3,
             heightFactor: 0.3,
-            child: Image.network(this.imageURL),
+            child: Image.network(imageURL),
           ),
         ),
       ),
@@ -23,15 +23,17 @@ class Tile {
   }
 }
 
-Tile tile = new Tile(
+Tile tile = Tile(
     imageURL: 'https://picsum.photos/512', alignment: Alignment(0, 0));
 
 class DisplayTileWidget extends StatelessWidget {
+  const DisplayTileWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Display a Tile as a Cropped Image'),
+        title: const Text('Display a Tile as a Cropped Image'),
         centerTitle: true,
       ),
       body: Center(
@@ -40,8 +42,8 @@ class DisplayTileWidget extends StatelessWidget {
             width: 150.0,
             height: 150.0,
             child: Container(
-                margin: EdgeInsets.all(20.0),
-                child: this.createTileWidgetFrom(tile))),
+                margin: const EdgeInsets.all(20.0),
+                child: createTileWidgetFrom(tile))),
         Container(
             height: 200,
             child: Image.network('https://picsum.photos/512',
