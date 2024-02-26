@@ -1,40 +1,49 @@
 import 'package:flutter/material.dart';
 
 class ImageTiles extends StatelessWidget {
-  final String imageUrl;
   final int crossAxisCount;
+  final String imagePath;
 
-  ImageTiles({Key? key, required this.imageUrl, this.crossAxisCount = 3}) : super(key: key);
+  const ImageTiles({
+    Key? key, 
+    this.crossAxisCount = 3,
+    required this.imagePath, 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Taquin board'),
-      ),
-      body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-        ),
-        itemCount: crossAxisCount * crossAxisCount,
-        itemBuilder: (BuildContext context, int index) {
-          // Calcul des coordonnées x et y pour chaque tuile
-          final x = (index % crossAxisCount) / (crossAxisCount - 1);
-          final y = (index ~/ crossAxisCount) / (crossAxisCount - 1);
+    double gridWidth = MediaQuery.of(context).size.width;
+    Image image = Image.asset(
+      imagePath,
+      width: gridWidth,
+      height: gridWidth, 
+      fit: BoxFit.cover,
+    );
 
-          return FittedBox(
-            fit: BoxFit.cover,
-            child: ClipRect(
-              child: Align(
-                alignment: FractionalOffset(x, y),
-                widthFactor: 1 / crossAxisCount,
-                heightFactor: 1 / crossAxisCount,
-                child: Image.network('https://picsum.photos/512'),
-              ),
-            ),
-          );
-        },
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
       ),
+      itemCount: crossAxisCount * crossAxisCount,
+      itemBuilder: (context, index) {
+        final int row = index ~/ crossAxisCount;
+        final int col = index % crossAxisCount;
+        final Alignment alignment = Alignment(
+          col * 2 / (crossAxisCount - 1) - 1,
+          row * 2 / (crossAxisCount - 1) - 1,
+        );
+
+        return GridTile(
+          child: ClipRect(
+            child: Align(
+              alignment: alignment,
+              widthFactor: 1 / crossAxisCount,
+              heightFactor: 1 / crossAxisCount,
+              child: image,
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -72,14 +72,14 @@ class MyHomePage extends StatelessWidget {
           ListTile(
             title: const Text('Exercice 5b'),
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ImageTiles(imageUrl: 'https://picsum.photos/512'), // Utilisez l'URL de votre choix ici.
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ImageTiles(
+                  crossAxisCount: 3, 
+                  imagePath: 'assets/imgs/basile_carre.png', 
                 ),
-              );
+              ));
             },
           ),
-
         ],
       ),
     );
