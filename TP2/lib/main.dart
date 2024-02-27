@@ -6,7 +6,13 @@ import 'screens/exo2b.dart';
 import 'screens/exo4.dart'; 
 import 'screens/exo5a.dart'; 
 import 'screens/exo5b.dart'; 
-import 'screens/exo6b.dart'; 
+import 'screens/exo5c.dart'; 
+
+
+
+
+
+
 
 void main() {
   runApp(const MyApp());
@@ -67,12 +73,21 @@ class MyHomePage extends StatelessWidget {
             },
           ),
 
-           ListTile(
-            title: const Text('Exercice 5b'),
+        ListTile(
+          title: const Text('Exercice 5b'),
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ImageGrid(imageUrl: 'assets/imgs/basile_carre.png'),
+            ));
+          },
+        ),
+  
+          ListTile(
+            title: const Text('Exercice 5c'),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ImageGrid(imageUrl: 'assets/imgs/basile_carre.png'),
-              ));
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => DynamicGridScreen()),
+              );
             },
           ),
 
