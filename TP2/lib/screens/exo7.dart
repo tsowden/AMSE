@@ -21,9 +21,21 @@ class _Exo7ScreenState extends State<Exo7Screen> {
   }
 
   void _initializeTiles() {
-    tiles = List<int?>.generate(9, (index) => index + 1)..[random.nextInt(9)] = null;
-    tiles.shuffle();
+  // Générez une configuration gagnante
+  tiles = List<int?>.generate(9, (index) => index + 1)..[8] = null;
+  
+  // Effectuez un certain nombre d'échanges aléatoires
+  for (int i = 0; i < 100; i++) {
+    int randomIndex1 = random.nextInt(9);
+    int randomIndex2 = random.nextInt(9);
+
+    // Échangez les valeurs des deux indices
+    int? temp = tiles[randomIndex1];
+    tiles[randomIndex1] = tiles[randomIndex2];
+    tiles[randomIndex2] = temp;
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,34 +43,48 @@ class _Exo7ScreenState extends State<Exo7Screen> {
       appBar: AppBar(
         title: const Text('Exercice 7'),
       ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        itemCount: tiles.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              _swapTiles(index);
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: tiles[index] != null
-                    ? Colors.primaries[tiles[index]! % Colors.primaries.length]
-                    : Colors.grey[300],
-                border: Border.all(color: Colors.white, width: 3),
+      body: Column(
+        children: [
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
               ),
-              child: Center(
-                child: tiles[index] != null
-                    ? Text(
-                        'Tile ${tiles[index]}',
-                        style: const TextStyle(fontSize: 24, color: Colors.white),
-                      )
-                    : SizedBox.shrink(),
+              itemCount: tiles.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    _swapTiles(index);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: tiles[index] != null
+                          ? Colors.primaries[tiles[index]! % Colors.primaries.length]
+                          : Colors.grey[300],
+                      border: Border.all(color: Colors.white, width: 3),
+                    ),
+                    child: Center(
+                      child: tiles[index] != null
+                          ? Text(
+                              'Tile ${tiles[index]}',
+                              style: const TextStyle(fontSize: 24, color: Colors.white),
+                            )
+                          : SizedBox.shrink(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          if (_isWinner()) // Affiche "C'est gagné !!" si la condition de victoire est remplie
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "C'est gagné !!",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-          );
-        },
+        ],
       ),
     );
   }
@@ -72,6 +98,28 @@ class _Exo7ScreenState extends State<Exo7Screen> {
             tiles[adjacentIndex] = tiles[tappedIndex];
             tiles[tappedIndex] = null;
           });
+
+          if (_isWinner()) {
+            // Si c'est gagné, affiche un message
+            // ignore: inference_failure_on_function_invocation
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text("Félicitations !"),
+                content: Text("C'est gagné !!"),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      _initializeTiles(); // Redémarrer le jeu après la victoire
+                    },
+                    child: const Text("OK"),
+                  ),
+                ],
+              ),
+            );
+          }
+
           break;
         }
       }
@@ -90,5 +138,14 @@ class _Exo7ScreenState extends State<Exo7Screen> {
     if (col < 2) adjacentIndices.add(index + 1);
 
     return adjacentIndices;
+  }
+
+  bool _isWinner() {
+    for (int i = 0; i < tiles.length; i++) {
+      if (tiles[i] != null && tiles[i] != i + 1) {
+        return false;
+      }
+    }
+    return true;
   }
 }
