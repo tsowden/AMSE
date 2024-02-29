@@ -55,6 +55,9 @@ class ImageTile extends StatelessWidget {
       fit: BoxFit.fill,
       child: ClipRect(
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: const Color.fromARGB(255, 255, 255, 255), width:1), // Ajustez la largeur de la bordure ici
+          ),
           child: Align(
             alignment: alignment,
             widthFactor: widthFactor,
