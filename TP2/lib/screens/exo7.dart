@@ -13,6 +13,7 @@ class Exo7Screen extends StatefulWidget {
 
 class _Exo7ScreenState extends State<Exo7Screen> {
   late List<int?> tiles;
+  String imageUrl = 'https://picsum.photos/512';
 
   @override
   void initState() {
@@ -56,21 +57,10 @@ class _Exo7ScreenState extends State<Exo7Screen> {
                   onTap: () {
                     _swapTiles(index);
                   },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: tiles[index] != null
-                          ? Colors.primaries[tiles[index]! % Colors.primaries.length]
-                          : Colors.grey[300],
-                      border: Border.all(color: Colors.white, width: 3),
-                    ),
-                    child: Center(
-                      child: tiles[index] != null
-                          ? Text(
-                              'Tile ${tiles[index]}',
-                              style: const TextStyle(fontSize: 24, color: Colors.white),
-                            )
-                          : SizedBox.shrink(),
-                    ),
+                  
+                  child: ImageTile(
+                    imageUrl: imageUrl,
+                    tileNumber: tiles[index],
                   ),
                 );
               },
@@ -147,5 +137,34 @@ class _Exo7ScreenState extends State<Exo7Screen> {
       }
     }
     return true;
+  }
+}
+
+class ImageTile extends StatelessWidget {
+  final String imageUrl;
+  final int? tileNumber;
+
+  ImageTile({
+    required this.imageUrl,
+    required this.tileNumber,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.fill,
+      child: ClipRect(
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white, width: 3),
+          ),
+          child: Center(
+            child: tileNumber != null
+                ? Image.network(imageUrl) // Remplacez cela par le widget Image approprié pour votre logique
+                : SizedBox.shrink(),
+          ),
+        ),
+      ),
+    );
   }
 }
