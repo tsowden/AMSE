@@ -22,7 +22,6 @@ class _Exo6bScreenState extends State<Exo6bScreen> {
 
   void _initializeTiles() {
     tiles = List.generate(9, (index) => index + 1);
-    // Supprimez une tuile aléatoire de la liste en la rendant null
     tiles[random.nextInt(tiles.length)] = null;
   }
 
@@ -66,11 +65,9 @@ class _Exo6bScreenState extends State<Exo6bScreen> {
 
   void _swapTiles(int tappedIndex) {
   if (tiles[tappedIndex] != null) {
-    // Si la tuile cliquée n'est pas vide, recherchez la case vide adjacente
     List<int> adjacentIndices = getAdjacentIndices(tappedIndex);
     for (int adjacentIndex in adjacentIndices) {
       if (tiles[adjacentIndex] == null) {
-        // Échangez la tuile cliquée avec la case vide adjacente
         setState(() {
           tiles[adjacentIndex] = tiles[tappedIndex];
           tiles[tappedIndex] = null;

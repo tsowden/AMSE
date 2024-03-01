@@ -8,7 +8,6 @@ class Tile {
 
   Tile(this.color);
 
-  // Ajoutez cette méthode randomColor à la classe Tile
   Tile.randomColor() : color = _generateRandomColor();
 
   static Color _generateRandomColor() {

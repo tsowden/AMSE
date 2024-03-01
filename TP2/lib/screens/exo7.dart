@@ -15,25 +15,29 @@ class ImageTile extends StatelessWidget {
   final String imageUrl;
   final Tile tile;
 
-  const ImageTile({super.key, 
+  const ImageTile({
+    Key? key,
     required this.imageUrl,
     required this.tile,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FittedBox(
       fit: BoxFit.fill,
       child: ClipRect(
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 3),
+            border: Border.all(color: tile.id != null ? Colors.white : Colors.transparent, width: 3),
+            color: tile.id != null ? null : Colors.transparent, 
           ),
           child: Align(
             alignment: tile.alignment,
             widthFactor: 1 / 3,
             heightFactor: 1 / 3,
-            child: tile.id != null ? Image.network(imageUrl) : const SizedBox.shrink(),
+            child: tile.id != null ? Image.network(imageUrl, fit: BoxFit.cover) : const SizedBox.shrink(),
           ),
         ),
       ),
@@ -54,9 +58,10 @@ class _Exo7ScreenState extends State<Exo7Screen> {
   final String imageUrl = 'https://picsum.photos/512';
   int _score = 0;
   bool _gameStarted = false;
-  bool _showOriginalImage = false; // Now will be used
-  bool _showTchoupi = false; // Now will be used
+  bool _showOriginalImage = false; 
+  bool _showTchoupi = false; 
   int _gridSize = 3;
+  List<int> moveHistory = [];
   List<String> phrases = [
     "Pas très bien joué, dommage.",
     "D'ici 200 ou 300 coups, tu vas y arriver.",
@@ -74,7 +79,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
     "Je suis un pingouin. Tu es un manchot."
   ];
 
-  String _currentPhrase = ""; // Now will be used
+  String _currentPhrase = ""; 
 
   @override
   void initState() {
@@ -88,7 +93,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
     setState(() {
       _gameStarted = true;
       _initializeTiles();
-      _score = 0; // Reset the score
+      _score = 0; 
     });
   }
 
@@ -103,7 +108,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
     if (_gridSize < 5) {
       setState(() {
         _gridSize++;
-        _initializeTiles(); // Re-initialize the tiles for the new grid size
+        _initializeTiles(); 
       });
     }
   }
@@ -112,7 +117,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
     if (_gridSize > 3) {
       setState(() {
         _gridSize--;
-        _initializeTiles(); // Re-initialize the tiles for the new grid size
+        _initializeTiles(); 
       });
     }
   }
@@ -149,6 +154,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
         tiles[tappedIndex] = tiles[emptyTileIndex];
         tiles[emptyTileIndex] = temp;
         _score++;
+        moveHistory.add(tappedIndex);
         _selectRandomPhrase();
       });
       if (_isWinner()) {
@@ -156,6 +162,20 @@ class _Exo7ScreenState extends State<Exo7Screen> {
       }
     }
   }
+  void _undoMove() {
+      if (moveHistory.isNotEmpty) {
+        setState(() {
+          int lastMove = moveHistory.removeLast();
+          int? emptyTileIndex = tiles.indexWhere((tile) => tile.id == null);
+
+          Tile temp = tiles[lastMove];
+          tiles[lastMove] = tiles[emptyTileIndex];
+          tiles[emptyTileIndex] = temp;
+          _score--;
+
+        });
+      }
+    }
 
   List<int> getAdjacentIndices(int index) {
     int gridSize = _gridSize;
@@ -191,8 +211,8 @@ class _Exo7ScreenState extends State<Exo7Screen> {
             TextButton(
               child: const Text("OK"),
               onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-                _initializeTiles(); // Re-initialize the game state
+                Navigator.of(context).pop(); 
+                _initializeTiles(); 
               },
             ),
           ],
@@ -216,13 +236,17 @@ class _Exo7ScreenState extends State<Exo7Screen> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-    data: AppTheme.darkTheme, // Use the dark theme defined in your theme.dart file
+    data: AppTheme.darkTheme, 
     child: Scaffold(
       appBar: AppBar(
         title: const Text('Exercice 7'),
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Déplacements: $_score', style: const TextStyle(fontSize: 20)),
+          ),
           Expanded(
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -230,25 +254,40 @@ class _Exo7ScreenState extends State<Exo7Screen> {
               ),
               itemCount: _gridSize * _gridSize,
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    if (_gameStarted) {
-                      _swapTiles(index);
-                    }
-                  },
-                  child: ImageTile(
-                    key: ValueKey(index), // Ajout pour optimiser la performance de rendu
-                    imageUrl: imageUrl,
-                    tile: tiles[index],
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      if (_gameStarted) {
+                        _swapTiles(index);
+                      }
+                    },
+                    child: ImageTile(
+                      key: ValueKey(index), 
+                      imageUrl: imageUrl,
+                      tile: tiles[index],
+                    ),
                   ),
                 );
               },
+
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Déplacements: $_score', style: const TextStyle(fontSize: 20)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                onPressed: !_gameStarted ? _decreaseGridSize : null,
+                child: const Text('<', style: TextStyle(fontSize: 14)), // Utilisez le texte au lieu de l'icône
+              ),
+              Text('Taille de la grille : $_gridSize'),
+              TextButton(
+                onPressed: !_gameStarted ? _increaseGridSize : null,
+                child: const Text('>', style: TextStyle(fontSize: 14)), // Utilisez le texte au lieu de l'icône
+              ),
+            ],
           ),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: ElevatedButton(
@@ -263,32 +302,22 @@ class _Exo7ScreenState extends State<Exo7Screen> {
                     }
                   },
                 ),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
+                foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 24, 27, 39)), // Text color
               ),
               child: Text(_gameStarted ? 'Stopper la partie' : 'Lancer la partie'),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_right_alt), 
-                onPressed: !_gameStarted ? _decreaseGridSize : null,
-              ),
-              Text('Taille de la grille : $_gridSize'),
-              IconButton(
-                icon: const Icon(Icons.zoom_in), 
-                onPressed: !_gameStarted ? _increaseGridSize : null,
-              ),
-            ],
-          ),
-          ElevatedButton(
+          const SizedBox(height: 8),
+          FractionallySizedBox(
+            widthFactor: 0.8,
+            child: ElevatedButton(
             onPressed: () {
               setState(() {
                 _showTchoupi = !_showTchoupi;
               });
             },
             child: Text(_showTchoupi ? "Cacher T'choupi" : "Afficher T'choupi"),
+          ),
           ),
           if (_showTchoupi)
             Row(
@@ -304,13 +333,25 @@ class _Exo7ScreenState extends State<Exo7Screen> {
                 ),
               ],
             ),
-          ElevatedButton(
+          const SizedBox(height: 8),
+          FractionallySizedBox(
+            widthFactor: 0.8,
+            child: ElevatedButton(
+              onPressed: moveHistory.isNotEmpty ? _undoMove : null, // Désactiver si l'historique est vide
+              child: const Text('Annuler le dernier coup'),
+            ),
+          ),
+          const SizedBox(height: 8),
+          FractionallySizedBox(
+            widthFactor: 0.8,
+            child: ElevatedButton(
             onPressed: () {
               setState(() {
                 _showOriginalImage = !_showOriginalImage;
               });
             },
             child: Text(_showOriginalImage ? "Cacher l'image originale" : "Voir l'image originale"),
+          ),
           ),
           if (_showOriginalImage)
             Padding(
@@ -328,6 +369,7 @@ class _Exo7ScreenState extends State<Exo7Screen> {
                 ),
               ),
             ),
+            const SizedBox(height: 8),
         ],
       ),
     ));
@@ -335,7 +377,6 @@ class _Exo7ScreenState extends State<Exo7Screen> {
 
 
     }
-
 class DialogueBubble extends StatelessWidget {
   final String text;
 
@@ -346,7 +387,7 @@ class DialogueBubble extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 152, 112, 186), // Mauve clair
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(

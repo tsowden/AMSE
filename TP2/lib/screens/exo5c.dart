@@ -20,7 +20,7 @@ class DynamicGridScreen extends StatefulWidget {
 }
 
 class _DynamicGridScreenState extends State<DynamicGridScreen> {
-  int gridSize = 3; // Valeur initiale pour la taille du quadrillage
+  int gridSize = 3;
 
   @override
   Widget build(BuildContext context) {
