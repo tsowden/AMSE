@@ -48,6 +48,8 @@ flutter:
         - asset: fonts/KenyanCoffee-Regular.ttf
   assets:
     - assets/imgs/basile_carre.png
+    - assets/imgs/
+    
     
 
 
